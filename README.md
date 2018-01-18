@@ -1,3 +1,7 @@
+# Node Todo API
+
+This is a test API to use in the docker development labs.
+
 ## You can test the API with the following (if you have curl):
 
 To get the items:
