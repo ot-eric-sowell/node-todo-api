@@ -1,9 +1,17 @@
-// This is how you bring in node library dependencies that you have installed with npm
 const express = require('express');
 const bodyParser = require('body-parser');
 const uuid = require('uuid/v1');
 
 const app = express();
+
+// Of CORS we need this.
+// Haha...ha.......ha
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  next();
+});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -53,7 +61,6 @@ app.delete('/item/:id', (req, res) => {
 
 });
 
-// This actually starts the node app listening on the port specified in the .env file
 app.listen(process.env.PORT, () => {
   console.log(`Listening on port ${process.env.PORT}.`);
 });
